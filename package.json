@@ -1,0 +1,26 @@
+{
+	"name": "captcha-it",
+	"private": true,
+	"scripts": {
+		"start": "pm2 start ./ecosystem.config.js --env production",
+		"start:dev": "npm run start -- --watch ",
+		"start:quick": "nodemon ./app/index.js",
+		"lint": "esw .",
+		"lint:watch": "npm run lint -- --watch"
+	},
+	"dependencies": {
+		"dotenv-safe": "^5.0.1",
+		"express": "^4.16.3",
+		"pm2": "^2.10.4"
+	},
+	"devDependencies": {
+		"chai": "^4.1.2",
+		"eslint": "^4.19.1",
+		"eslint-config-airbnb-base": "^12.1.0",
+		"eslint-plugin-import": "^2.12.0",
+		"eslint-watch": "^3.1.5",
+		"mocha": "^5.2.0",
+		"nodemon": "^1.17.5",
+		"supertest": "^3.1.0"
+	}
+}
