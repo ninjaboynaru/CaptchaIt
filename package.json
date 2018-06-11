@@ -6,7 +6,9 @@
 		"start:dev": "npm run start -- --watch ",
 		"start:quick": "nodemon ./app/index.js",
 		"lint": "esw .",
-		"lint:watch": "npm run lint -- --watch"
+		"lint:watch": "npm run lint -- --watch",
+		"test": "mocha ./tests/",
+		"test:watch": "npm run test -- --watch --reporter min"
 	},
 	"dependencies": {
 		"body-parser": "^1.18.3",
