@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const cors = require('../app/routes/middleware/cors.js');
+const cors = require('../app/routes/_middleware/cors.js');
 
 describe('CORS', function() {
 	const app = express();
