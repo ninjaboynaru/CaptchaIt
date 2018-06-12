@@ -11,6 +11,10 @@ module.exports = function({ httpError, redisClient, path = '/captcha' } = {}) {
 	const validateQuery = queryValidator(httpError, querySchema, validationOptions, 'query');
 
 	function route(req, res, next) {
+		if (req.query.background[0] !== '#') {
+			req.query.background = `#${req.query.background}`;
+		}
+
 		const id = uniqid.time(`CAPTCHA-${Math.random() * 10}-`);
 		const svg = svgCaptcha.create(req.query);
 		const expire = config.get('cache.expire');
