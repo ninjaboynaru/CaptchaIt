@@ -6,6 +6,7 @@ module.exports = {
 		noise: { type: 'integer', default: 1, maximum: 12, minimum: 0 },
 		background: { type: 'string', default: '#cc9966' },
 		width: { type: 'integer', default: 150 },
-		height: { type: 'integer', default: 50 }
+		height: { type: 'integer', default: 50 },
+		dev: { type: 'boolean', default: false }
 	}
 };

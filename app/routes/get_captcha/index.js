@@ -20,7 +20,12 @@ module.exports = function({ httpError, redisClient, path = '/captcha' } = {}) {
 				return next(httpError.build.internal({ source: 'REDIS' }));
 			}
 
-			res.status(201).json({ id, expire, data: svg.data });
+			const response = { id, expire, data: svg.data };
+			if (process.env.NODE_NEV !== 'production' && req.query.dev === true) {
+				response.text = svg.text;
+			}
+
+			res.status(201).json(response);
 		});
 	}
 
