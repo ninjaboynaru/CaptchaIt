@@ -4,12 +4,19 @@ const cors = require('./_middleware/cors');
 const ping = require('./_middleware/ping');
 const getCaptcha = require('./get_captcha/index.js');
 const postCaptcha = require('./post_captcha/index.js');
+const errorHandler = require('./errorHandler.js');
+const httpError = require('../services/httpError.js');
 
-const router = express.Router();
 
-router.use(cors, session);
-router.get('/ping', ping);
-router.use(getCaptcha());
-router.use(postCaptcha());
+module.exports = function({ redisClient } = {}) {
+	const router = express.Router();
 
-module.exports = router;
+	router.options('*', cors);
+	router.use(cors, session);
+	router.get('/ping', ping);
+	router.use(getCaptcha({ httpError, redisClient }));
+	router.use(postCaptcha({ httpError, redisClient }));
+	router.use(errorHandler({ httpError }));
+
+	return router;
+};
