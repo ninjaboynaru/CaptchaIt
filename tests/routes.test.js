@@ -17,7 +17,7 @@ const captchaPath = '/captcha';
 describe('Routes', function() {
 	describe('GET Captcha', function() {
 		it('Can get a captcha', function(done) {
-			request.get(captchaPath).expect(201).end(function(err, res) {
+			request.get(captchaPath).expect(200).end(function(err, res) {
 				if (err) {
 					throw err;
 				}
@@ -33,7 +33,7 @@ describe('Routes', function() {
 		});
 
 		it('Can get a captcha with "dev" option', function(done) {
-			request.get(`${captchaPath}/?dev=true`).expect(201).end(function(err, res) {
+			request.get(`${captchaPath}/?dev=true`).expect(200).end(function(err, res) {
 				if (err) {
 					throw err;
 				}

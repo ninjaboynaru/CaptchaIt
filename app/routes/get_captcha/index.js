@@ -25,7 +25,7 @@ module.exports = function({ httpError, redisClient, path = '/captcha' } = {}) {
 				response.text = svg.text;
 			}
 
-			res.status(201).json(response);
+			res.status(200).json(response);
 		});
 	}
 
