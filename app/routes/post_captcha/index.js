@@ -11,16 +11,16 @@ module.exports = function({ httpError, redisClient, path = '/captcha' } = {}) {
 	const validateQuery = queryValidator(httpError, querySchema, validationOptions, 'body');
 
 	function route(req, res, next) {
-		const sessionId = req.session.id;
+		const id = req.body.id;
 
-		redisClient.get(sessionId, function(err, reply) {
+		redisClient.get(id, function(err, reply) {
 			if (err) {
 				return next(httpError.build.internal({ source: 'REDIS' }));
 			}
 
 			if (reply === req.body.text) {
 				res.status(200).json({ valid: true });
-				redisClient.del(sessionId);
+				redisClient.del(id);
 			}
 			else {
 				res.status(200).json({ valid: false });
