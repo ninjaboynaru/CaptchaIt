@@ -2,7 +2,7 @@
 	"name": "captcha-it",
 	"private": true,
 	"scripts": {
-		"start": "pm2 start ./ecosystem.config.js --env production",
+		"start": "node ./app/index.js",
 		"start:dev": "npm run start -- --watch ",
 		"start:quick": "nodemon ./app/index.js",
 		"lint": "esw .",
