@@ -3,23 +3,26 @@ const redis = require('redis');
 
 
 function getRedisUrl() {
-	let redisUrl;
-
 	if (process.env.NODE_ENV === 'production') {
-		redisUrl = process.env.REDIS_PROD_URI;
+		return process.env.REDIS_PROD_URI;
 	}
 	else if (process.env.NODE_ENV === 'testing') {
-		redisUrl = process.env.REDIS_TEST_URI;
-	}
-	else {
-		redisUrl = process.env.REDIS_DEV_URI;
+		return process.env.REDIS_TEST_URI;
 	}
 
-	return redisUrl;
+	return process.env.REDIS_DEV_URI;
+}
+
+function getRedisPassword() {
+	if (process.env.NODE_ENV === 'production') {
+		return process.env.REDIS_PROD_PASS;
+	}
+
+	return process.env.REDIS_DEV_PASS;
 }
 
 function createRedisClient() {
-	return redis.createClient(getRedisUrl());
+	return redis.createClient(getRedisUrl(), { password: getRedisPassword() });
 }
 
 module.exports = { getRedisUrl, createRedisClient };
