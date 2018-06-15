@@ -1,6 +1,7 @@
 # CaptchaIt
-[Demonstration Site - http://captchait.surge.sh/](http://captchait.surge.sh/)
-[Live API - https://captchait.herokuapp.com/](https://captchait.herokuapp.com/)
+[Demonstration Site - http://captchait.surge.sh/](http://captchait.surge.sh/)  
+[Live API - https://captchait.herokuapp.com/](https://captchait.herokuapp.com/)  
+
 **Captcha It**  
 CaptchaIt is an SVG captcha service.  
 CaptcahIt can be used from any host/url *(CORS)* and allows for customization of the SVG, such as changing its width, height, background color or character count.
